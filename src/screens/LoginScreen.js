@@ -8,7 +8,7 @@ function LoginScreen() {
 			<div className="loginScreen__background">
 				<img className="loginScreen__logo" src={loginScreenBackground} alt="" />
 				<button className="loginScreen__button">Sign In</button>
-				<div className="loginScreen__gradient"></div>
+				<div className="loginScreen__gradient" />
 			</div>
 		</div>
 	);
