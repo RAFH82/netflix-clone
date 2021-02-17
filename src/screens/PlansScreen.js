@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { selectUser } from "../features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { subscribed, selectUser } from "../features/userSlice";
 import db from "../firebase";
 import "./PlansScreen.css";
 import { loadStripe } from "@stripe/stripe-js";
@@ -8,6 +8,7 @@ import { loadStripe } from "@stripe/stripe-js";
 function PlansScreen() {
 	const [products, setProducts] = useState([]);
 	const [subscription, setSubscription] = useState(null);
+	const dispatch = useDispatch();
 	const user = useSelector(selectUser);
 
 	useEffect(() => {
@@ -23,6 +24,11 @@ function PlansScreen() {
 						current_period_start: subscription.data().current_period_start
 							.seconds,
 					});
+					dispatch(
+						subscribed({
+							active_sub: true,
+						})
+					);
 				});
 			});
 	}, [user.id]);

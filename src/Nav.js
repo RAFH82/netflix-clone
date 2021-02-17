@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./Nav.css";
 import netflixLogo from "./img/netflix-logo.png";
 import avatarLogo from "./img/avatar_logo.png";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { selectSub } from "./features/userSlice";
 
 function Nav() {
 	const [show, handleShow] = useState(false);
+	const active_sub = useSelector(selectSub);
 	const history = useHistory();
 
 	const transitionNavBar = () => {
@@ -28,7 +31,9 @@ function Nav() {
 					className="nav__logo"
 					src={netflixLogo}
 					alt="netflix logo"
-					onClick={() => history.push("/")}
+					onClick={() => {
+						active_sub && history.push("/");
+					}}
 				/>
 				<img
 					className="nav__avatar"

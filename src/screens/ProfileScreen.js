@@ -2,7 +2,7 @@ import React from "react";
 import Nav from "../Nav";
 import "./ProfileScreen.css";
 import avatarLogo from "../img/avatar_logo.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
 import { auth } from "../firebase";
 import PlansScreen from "./PlansScreen";
